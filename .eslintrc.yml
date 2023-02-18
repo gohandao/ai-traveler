@@ -1,0 +1,16 @@
+env:
+  browser: true
+  node: true
+extends:
+  - bayathy
+  - next/core-web-vitals
+
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: ./tsconfig.json
+
+rules:
+  "import/no-unresolved": off
+  "unicorn/prevent-abbreviations": off
+  "react/no-unknown-property": off
+  "unicorn/filename-case": off
