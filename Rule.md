@@ -7,3 +7,5 @@
 # Pull Request
 - must 1 review
 - Requester needs merge
+# Creating issues
+- Japanese
