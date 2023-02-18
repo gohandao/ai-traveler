@@ -25,3 +25,6 @@ jobs:
 
       - name: Lint code
         run: yarn lint
+
+      - name: Check format code
+        run: yarn fmt:check
