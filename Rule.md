@@ -1,6 +1,6 @@
 # Branch
 - main
-- - develop
-- - - feature/${issue}
-- - - refactor/${issue}
-- - - fix/${issue}
+- develop
+- feature/${issue}
+- refactor/${issue}
+- fix/${issue}
