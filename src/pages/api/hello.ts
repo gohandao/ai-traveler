@@ -6,8 +6,9 @@ type Data = {
 }
 
 export default function handler(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ) {
   res.status(200).json({ name: 'John Doe' })
 }
