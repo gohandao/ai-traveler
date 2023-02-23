@@ -62,7 +62,7 @@ const Form: NextPage = () => {
             </option>
           ))}
         </select>
-        {errors.cost && <p style={{ color: 'red' }}>{errors.cost.message}</p>}
+        {errors.cost && <p className="text-red-500">{errors.cost.message}</p>}
         <select {...register('place')}>
           {PLACES.map(place => (
             <option key={place} value={place}>
@@ -70,7 +70,7 @@ const Form: NextPage = () => {
             </option>
           ))}
         </select>
-        {errors.place && <p style={{ color: 'red' }}>{errors.place.message}</p>}
+        {errors.place && <p className="text-red-500">{errors.place.message}</p>}
         <select {...register('numberOfPeople', { valueAsNumber: true })}>
           {NUMBEROFPEOPLE.map(num => (
             <option key={num} value={num}>
@@ -78,7 +78,7 @@ const Form: NextPage = () => {
             </option>
           ))}
         </select>
-        {errors.numberOfPeople && <p style={{ color: 'red' }}>{errors.numberOfPeople.message}</p>}
+        {errors.numberOfPeople && <p className="text-red-500">{errors.numberOfPeople.message}</p>}
         <select {...register('numberOfDays', { valueAsNumber: true })}>
           {NUMBEROFDAYS.map(num => (
             <option key={num} value={num}>
@@ -86,7 +86,7 @@ const Form: NextPage = () => {
             </option>
           ))}
         </select>
-        {errors.numberOfDays && <p style={{ color: 'red' }}>{errors.numberOfDays.message}</p>}
+        {errors.numberOfDays && <p className="text-red-500">{errors.numberOfDays.message}</p>}
         <select {...register('purpose')}>
           {PURPOSES.map(purpose => (
             <option key={purpose} value={purpose}>
@@ -94,7 +94,7 @@ const Form: NextPage = () => {
             </option>
           ))}
         </select>
-        {errors.purpose && <p style={{ color: 'red' }}>{errors.purpose.message}</p>}
+        {errors.purpose && <p className="text-red-500">{errors.purpose.message}</p>}
         <button type="submit">送信</button>
       </form>
     </div>
