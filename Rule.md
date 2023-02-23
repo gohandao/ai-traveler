@@ -9,6 +9,7 @@
 - Requester needs merge
 # Naming
 - variables: LowerCamel
+- functions: LowerCamel
 - components: UpperCamel
 - types: LowerCamel
 - schema: LowerCamel
