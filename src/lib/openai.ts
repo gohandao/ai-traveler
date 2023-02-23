@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from 'openai'
 
-const OPENAI_API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 const configuration = new Configuration({
   // organization: "xxxx-xxxx",
   apiKey: OPENAI_API_KEY,
