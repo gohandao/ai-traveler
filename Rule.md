@@ -15,5 +15,5 @@
 - components: UpperCamel
 - types: UpperCamel
 - schema: lowerCamel
-# Creating issues
+# Issues Language
 - Japanese
