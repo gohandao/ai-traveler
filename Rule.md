@@ -8,6 +8,7 @@
 - must 1 review
 - Requester needs merge
 # Naming
+- env: UpperSnake
 - variables: LowerCamel
 - functions: LowerCamel
 - components: UpperCamel
