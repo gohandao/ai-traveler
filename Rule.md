@@ -8,11 +8,11 @@
 - must 1 review
 - Requester needs merge
 # Naming
-- env: UpperSnake
-- variables: LowerCamel
-- functions: LowerCamel
+- env: UPPER_SNAKE
+- variables: lowerCamel
+- functions: lowerCamel
 - components: UpperCamel
-- types: LowerCamel
-- schema: LowerCamel
+- types: UpperCamel
+- schema: lowerCamel
 # Creating issues
 - Japanese
