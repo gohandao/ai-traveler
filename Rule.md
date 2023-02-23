@@ -7,5 +7,10 @@
 # Pull Request
 - must 1 review
 - Requester needs merge
+# Naming
+- variables: LowerCamel
+- components: UpperCamel
+- types: LowerCamel
+- schema: LowerCamel
 # Creating issues
 - Japanese
