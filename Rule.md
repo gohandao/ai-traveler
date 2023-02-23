@@ -10,6 +10,7 @@
 # Naming
 - env: UPPER_SNAKE
 - variables: lowerCamel
+- constatns: UPPERCASE
 - functions: lowerCamel
 - components: UpperCamel
 - types: UpperCamel
