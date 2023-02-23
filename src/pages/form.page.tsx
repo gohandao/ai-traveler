@@ -26,7 +26,7 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>
 
-const COST = [0, 5000, 10_000, 30_000, 50_000, 70_000, 100_000, 150_000, 200_000]
+const COSTS = [0, 5000, 10_000, 30_000, 50_000, 70_000, 100_000, 150_000, 200_000]
 const PLACES = ['東京', '大阪', 'アメリカ', 'オーストラリア']
 const NUMBEROFPEOPLE = Array.from({ length: 10 }, (_, index) => index + 1)
 const NUMBEROFDAYS = Array.from({ length: 10 }, (_, index) => index + 1)
@@ -56,7 +56,7 @@ const Form: NextPage = () => {
     <div>
       <form onSubmit={handleSubmit(onsubmit)}>
         <select {...register('cost', { valueAsNumber: true })}>
-          {COST.map(cost => (
+          {COSTS.map(cost => (
             <option key={cost} value={cost}>
               {cost}
             </option>
