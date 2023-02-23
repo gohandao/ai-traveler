@@ -1,18 +1,23 @@
 import { useState } from 'react'
 
+import axios from 'axios'
+
 export const SampleAiRenponse = async () => {
   const [output, setOutput] = useState<string>('')
   const prompt = '例）東京都のおすすめ観光地は？'
-  const response = await fetch('/api/getAiResponse?prompt=' + prompt, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then(response => response.text())
-    .catch(error => {
-      console.error(error)
-    })
-  typeof response == 'string' && setOutput(response)
+  try {
+    const { data } = await axios.post(
+      '/api/getAiResponse',
+      { prompt },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    typeof data === 'string' && setOutput(data)
+  } catch (error) {
+    console.error(error)
+  }
   return <p>{output}</p>
 }
