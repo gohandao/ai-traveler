@@ -10,3 +10,28 @@ datasource db {
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
+
+model User {
+  id      Int       @unique @default(autoincrement())
+  uuid    String    @unique
+  history History[]
+}
+
+model History {
+  id     Int    @unique @default(autoincrement())
+  plans  Plan[]
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+
+  @@index([userId])
+}
+
+model Plan {
+  id          Int     @unique @default(autoincrement())
+  destination String
+  description String
+  history     History @relation(fields: [historyId], references: [id], onDelete: Cascade)
+  historyId   Int
+
+  @@index([historyId])
+}
