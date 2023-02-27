@@ -1857,6 +1857,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eventsource-parser@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "eventsource-parser@npm:0.1.0"
+  checksum: 873c24a4777887f9963945e3b54ec7d12a2031b9eacaa1a2d2cc025c0778fdf4429db9a7cf72aae72211ffbf0da8ef6bfe199846dffee2d7acd4f49394037332
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -4382,6 +4389,7 @@ __metadata:
     eslint: ^8.34.0
     eslint-config-bayathy: ^1.0.34
     eslint-config-next: ^13.1.6
+    eventsource-parser: ^0.1.0
     next: 13.1.6
     openai: ^3.1.0
     postcss: ^8.4.21
