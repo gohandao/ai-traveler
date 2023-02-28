@@ -2,7 +2,7 @@ import { createParser } from 'eventsource-parser'
 
 import type { ParsedEvent, ReconnectInterval } from 'eventsource-parser'
 
-export interface OpenAIStreamPayload {
+export type OpenAIStreamPayload = {
   model: string
   prompt: string
   temperature: number
@@ -61,7 +61,9 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
       // this ensures we properly read chunks and invoke an event for each SSE event stream
       const parser = createParser(onParse)
       // https://web.dev/streams/#asynchronous-iteration
-      for await (const chunk of res.body as any) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      for await (const chunk of res.body) {
         parser.feed(decoder.decode(chunk))
       }
     },
