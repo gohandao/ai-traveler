@@ -13,7 +13,7 @@
 - constatns: UPPERCASE
 - functions: lowerCamel
 - components: UpperCamel
-- types: T + UpperCamel
+- types: UpperCamel
 - schema: lowerCamel
 # Issues Language
 - Japanese
