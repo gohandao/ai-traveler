@@ -31,11 +31,11 @@ export const getEdgeAiStream = async ({ prompt, setOutput, setLoading }: Props) 
 
   const reader = data.getReader()
   const decoder = new TextDecoder()
-  let done = false
+  let isDone = false
 
-  while (!done) {
+  while (!isDone) {
     const { value, done: doneReading } = await reader.read()
-    done = doneReading
+    isDone = doneReading
     const chunkValue = decoder.decode(value)
     setOutput(prev => prev + chunkValue)
   }
