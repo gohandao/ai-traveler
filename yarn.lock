@@ -4382,6 +4382,7 @@ __metadata:
     eslint: ^8.34.0
     eslint-config-bayathy: ^1.0.34
     eslint-config-next: ^13.1.6
+    eslint-plugin-unused-imports: ^2.0.0
     next: 13.1.6
     openai: ^3.1.0
     postcss: ^8.4.21
