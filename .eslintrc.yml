@@ -5,6 +5,9 @@ extends:
   - bayathy
   - next/core-web-vitals
 
+plugins:
+  - unused-imports
+
 parser: '@typescript-eslint/parser'
 parserOptions:
   project: ./tsconfig.json
@@ -14,3 +17,4 @@ rules:
   "unicorn/prevent-abbreviations": off
   "react/no-unknown-property": off
   "unicorn/filename-case": off
+  "unused-imports/no-unused-imports": "error"
