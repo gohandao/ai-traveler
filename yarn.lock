@@ -4390,6 +4390,7 @@ __metadata:
     eslint-config-bayathy: ^1.0.34
     eslint-config-next: ^13.1.6
     eventsource-parser: ^0.1.0
+    eslint-plugin-unused-imports: ^2.0.0
     next: 13.1.6
     openai: ^3.1.0
     postcss: ^8.4.21
