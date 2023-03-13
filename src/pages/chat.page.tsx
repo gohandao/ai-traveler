@@ -88,7 +88,7 @@ const Chat: NextPage = () => {
         ))}
       </div>
       <form onSubmit={handleSubmit(onsubmit)}>
-        <textarea {...register('message')}></textarea>
+        <textarea {...register('message')} />
         {errors.message && <p className="text-red-500">{errors.message.message}</p>}
         <button type="submit">送信</button>
       </form>
