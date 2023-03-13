@@ -33,8 +33,7 @@ const Chat: NextPage = () => {
     },
   ])
   const apiMessages = messages.map(message => {
-    let role = ''
-    role = message.sender === 'ChatGPT' ? 'assistant' : 'user'
+    const role = message.sender === 'ChatGPT' ? 'assistant' : 'user'
     return { role: role, content: message.message }
   })
 
@@ -57,10 +56,10 @@ const Chat: NextPage = () => {
       sentTime: currentTime,
       sender: 'ChatGPT',
     }
-    const newApiMessage = {
+    const newApiMessage: ChatCompletionRequestMessage = {
       role: 'user',
       content: data.message,
-    } as ChatCompletionRequestMessage
+    }
 
     const newApiMessages = [...apiMessages, newApiMessage] as ChatCompletionRequestMessage[]
     const response = await createChatGPTResponse(newApiMessages)
