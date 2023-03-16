@@ -9,16 +9,16 @@ const configuration = new Configuration({
 })
 export const openai = new OpenAIApi(configuration)
 
-const systemMessage = {
+const systemMessage: ChatCompletionRequestMessage = {
   //  Explain things like you're talking to a software professional with 5 years of experience.
   role: 'system',
   content: 'あなたは優秀な旅行アドバイザーです。日数、予算、場所の情報をもとに、旅行プランを提案してください。',
 }
-export const createChatGPTResponse = async (messages: ChatCompletionRequestMessage[]) => {
-  const apiMessage = [systemMessage, ...messages] as ChatCompletionRequestMessage[]
+export const createChatGPTResponse = async (messages: ChatCompletionRequestMessage[]): Promise<string | undefined> => {
+  const apiMessages = [systemMessage, ...messages]
   const completion = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
-    messages: apiMessage,
+    messages: apiMessages,
   })
   return completion.data.choices[0].message?.content
 }

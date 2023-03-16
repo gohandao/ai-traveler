@@ -14,7 +14,7 @@ export type OpenAIStreamPayload = {
   n: number
 }
 
-export async function OpenAIStream(payload: OpenAIStreamPayload) {
+export async function OpenAIStream(payload: OpenAIStreamPayload): Promise<ReadableStream<Uint8Array>> {
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
 
@@ -29,7 +29,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     body: JSON.stringify(payload),
   })
 
-  const stream = new ReadableStream({
+  const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       // callback
       function onParse(event: ParsedEvent | ReconnectInterval) {

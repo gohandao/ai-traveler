@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,9 +11,7 @@ import type { ChatCompletionRequestMessage } from 'openai'
 import { createChatGPTResponse } from '@/lib/openai'
 
 const schema = z.object({
-  message: z.string().refine(value => value !== '', {
-    message: 'メッセージを入力してください',
-  }),
+  message: z.string().refine(value => value.length > 0, 'メッセージを入力してください'),
 })
 
 type Schema = z.infer<typeof schema>
@@ -22,8 +19,9 @@ type Schema = z.infer<typeof schema>
 type Message = {
   message: string
   sentTime: string
-  sender: string
+  sender: 'ChatGPT' | 'user'
 }
+
 const Chat: NextPage = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -32,10 +30,11 @@ const Chat: NextPage = () => {
       sender: 'ChatGPT',
     },
   ])
-  const apiMessages = messages.map(message => {
-    const role = message.sender === 'ChatGPT' ? 'assistant' : 'user'
-    return { role: role, content: message.message }
-  })
+
+  const apiMessages = messages.map(message => ({
+    role: message.sender === 'ChatGPT' ? 'assistant' : 'user',
+    content: message.message,
+  }))
 
   const {
     register,
@@ -49,9 +48,9 @@ const Chat: NextPage = () => {
     },
   })
 
-  const onsubmit = async (data: Schema) => {
+  const onSubmit = async (data: Schema) => {
     const currentTime = new Date().toLocaleTimeString()
-    const newMessage = {
+    const newMessage: Message = {
       message: data.message,
       sentTime: currentTime,
       sender: 'ChatGPT',
@@ -60,20 +59,16 @@ const Chat: NextPage = () => {
       role: 'user',
       content: data.message,
     }
-
     const newApiMessages = [...apiMessages, newApiMessage] as ChatCompletionRequestMessage[]
     const response = await createChatGPTResponse(newApiMessages)
 
     if (response) {
-      setMessages([
-        ...messages,
-        newMessage,
-        {
-          message: response,
-          sentTime: currentTime,
-          sender: 'ChatGPT',
-        },
-      ])
+      const chatResponse: Message = {
+        message: response,
+        sentTime: currentTime,
+        sender: 'ChatGPT',
+      }
+      setMessages([...messages, newMessage, chatResponse])
     }
     reset()
   }
@@ -87,7 +82,7 @@ const Chat: NextPage = () => {
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <textarea {...register('message')} />
         {errors.message && <p className="text-red-500">{errors.message.message}</p>}
         <button type="submit">送信</button>
