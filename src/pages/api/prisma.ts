@@ -30,11 +30,6 @@ async function getHistory(req: NextApiRequest, res: NextApiResponse) {
   const body: { userId: string } = req.body
 
   try {
-    // {
-    //     userId : string;
-    //     history : Plan[]
-    // }
-    // の形で帰ってくる
     const user = await prisma.user.findUnique({ where: { uuid: body.userId } })
     return res.status(200).json({ data: user, success: true })
   } catch (error) {
