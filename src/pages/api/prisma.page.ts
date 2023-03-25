@@ -29,6 +29,7 @@ async function createHistory(req: NextApiRequest, res: NextApiResponse) {
 async function getHistory(req: NextApiRequest, res: NextApiResponse) {
   const body: { userId: string } = req.body
 
+  // 存在しない場合nullが返る
   try {
     const user = await prisma.user.findUnique({ where: { uuid: body.userId } })
     return res.status(200).json({ data: user, success: true })
