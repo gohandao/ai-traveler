@@ -1,13 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import {createHistory, getHistory} from "@/lib/prisma";
+import {createHistory} from "@/lib/prisma/create";
+import { getHistory } from '@/lib/prisma/get';
+import {updateHistory} from "@/lib/prisma/update";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
+  switch (req.method) {
+  case 'POST': {
     return await createHistory(req, res)
-  } else if (req.method === 'GET') {
+  }
+  case 'GET': {
     return await getHistory(req, res)
-  } else {
+  }
+  case "PUT": {
+    return await updateHistory(req,res)
+  }
+  default: {
     return res.status(405).json({ message: 'Method not allowed', success: false })
+  }
   }
 }
